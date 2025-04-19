@@ -1,16 +1,13 @@
 package stepdefinitions;
 
-import java.time.Duration;
 import java.util.Map;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
+import factory.DriverFactory;
 import io.cucumber.datatable.DataTable;
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -20,21 +17,14 @@ public class Register {
 	
 	WebDriver driver;
 	
-	@Before
-	public void setup() {
-		driver = new ChromeDriver();
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
-		driver.get("https://tutorialsninja.com/demo");
-	}
-	
-	@After
-	public void tearDown() {
-		driver.quit();
+	@And("User selects Yes option for Newsletter")
+	public void User_selects_Yes_option_for_Newsletter() {
+		driver.findElement(By.cssSelector("input[name='newsletter'][value='1']")).click();
 	}
 	
 	@Given("User navigates to Register Account page")
 	public void user_navigates_to_register_account_page() {
+		driver = DriverFactory.getDriver();
 	    driver.findElement(By.xpath("//span[text()='My Account']")).click();
 	    driver.findElement(By.linkText("Register")).click();
 	}
