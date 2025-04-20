@@ -1,4 +1,4 @@
-Feature: Verify Login functionality
+Feature: Login functionality
 
   Scenario: Verify Login with valid credentials
     Given User navigates to Login page

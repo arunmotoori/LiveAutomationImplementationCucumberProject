@@ -1,6 +1,7 @@
 package factory;
 
 import java.time.Duration;
+import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -12,10 +13,8 @@ public class DriverFactory {
 	
 	static WebDriver driver;
 	
-	public static WebDriver openBrowserAndApplicationURL() {
-		
-		String browser = "chrome";
-		
+	public static WebDriver openBrowserAndApplicationURL(Properties prop) {
+		String browser = prop.getProperty("browserName");
 		if(browser.equals("chrome")) {
 			driver = new ChromeDriver();
 		}else if(browser.equals("firefox")) {
@@ -28,7 +27,7 @@ public class DriverFactory {
 		
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
-		driver.get("https://tutorialsninja.com/demo");
+		driver.get(prop.getProperty("appURL"));
 		
 		return driver;
 		
@@ -37,5 +36,7 @@ public class DriverFactory {
 	public static WebDriver getDriver() {
 		return driver;
 	}
+	
+	
 
 }

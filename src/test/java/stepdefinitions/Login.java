@@ -1,5 +1,7 @@
 package stepdefinitions;
 
+import java.util.Properties;
+
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -9,22 +11,25 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import utils.CommonUtils;
 
 public class Login {
 	
 	WebDriver driver;
+	Properties prop;
 	
 	@Given("User navigates to Login page")
 	public void user_navigates_to_login_page() {
 		driver = DriverFactory.getDriver();
+		prop = CommonUtils.loadPropertiesFile();
 	    driver.findElement(By.xpath("//span[text()='My Account']")).click();
 	    driver.findElement(By.linkText("Login")).click();
 	}
 
 	@When("User enters valid email and valid password into the fields")
 	public void user_enters_valid_email_and_valid_password_into_the_fields() {
-	    driver.findElement(By.id("input-email")).sendKeys("amotooricap6@gmail.com");
-	    driver.findElement(By.id("input-password")).sendKeys("12345");
+	    driver.findElement(By.id("input-email")).sendKeys(prop.getProperty("validEmail"));
+	    driver.findElement(By.id("input-password")).sendKeys(prop.getProperty("validPassword"));
 	}
 
 	@When("User clicks on Login button")
@@ -45,8 +50,8 @@ public class Login {
 	
 	@When("User enters invalid email and invalid password into the fields")
 	public void user_enters_invalid_email_and_invalid_password_into_the_fields() {
-		driver.findElement(By.id("input-email")).sendKeys(generateEmailWithNanoTime());
-	    driver.findElement(By.id("input-password")).sendKeys("67890");
+		driver.findElement(By.id("input-email")).sendKeys(CommonUtils.generateEmailWithNanoTime());
+	    driver.findElement(By.id("input-password")).sendKeys(prop.getProperty("invalidPassword"));
 	}
 
 	@Then("User should not get loggedin")
@@ -60,9 +65,5 @@ public class Login {
 	    Assert.assertEquals(expectedWarning,driver.findElement(By.xpath("//div[@class='alert alert-danger alert-dismissible']")).getText());
 	}
 	
-	public static String generateEmailWithNanoTime() {
-        long nanoTime = System.nanoTime();
-        return "user_" + nanoTime + "@example.com";
-    }
 	
 }

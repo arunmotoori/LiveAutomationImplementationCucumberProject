@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import factory.DriverFactory;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import utils.CommonUtils;
 
 public class MyHooks {
 	
@@ -12,7 +13,7 @@ public class MyHooks {
 	
 	@Before
 	public void setup() {
-		driver = DriverFactory.openBrowserAndApplicationURL();
+		driver = DriverFactory.openBrowserAndApplicationURL(CommonUtils.loadPropertiesFile());
 	}
 	
 	@After

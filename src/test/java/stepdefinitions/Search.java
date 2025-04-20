@@ -1,24 +1,30 @@
 package stepdefinitions;
 
+import java.util.Properties;
+
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import factory.DriverFactory;
 import io.cucumber.java.en.*;
+import utils.CommonUtils;
 
 public class Search {
 	
 	WebDriver driver;
+	Properties prop;
 	
 	@Given("User is on the Home page")
 	public void user_is_on_the_home_page() {
 		driver = DriverFactory.getDriver();
+		prop = CommonUtils.loadPropertiesFile();
+		
 	}
 
 	@When("User enters existing product into the Search box field")
 	public void user_enters_existing_product_into_the_search_box_field() {
-	    driver.findElement(By.name("search")).sendKeys("HP");
+	    driver.findElement(By.name("search")).sendKeys(prop.getProperty("exisingProduct"));
 	}
 
 	@And("User clicks on Search button")
@@ -33,7 +39,7 @@ public class Search {
 	
 	@When("User enters non existing product into the Search box field")
 	public void user_enters_non_existing_product_into_the_search_box_field() {
-		driver.findElement(By.name("search")).sendKeys("Honda");
+		driver.findElement(By.name("search")).sendKeys(prop.getProperty("nonExistingProduct"));
 	}
 
 	@Then("Proper message should be displayed in the search results")

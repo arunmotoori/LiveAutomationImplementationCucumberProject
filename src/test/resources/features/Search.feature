@@ -1,4 +1,4 @@
-Feature: Verify Search functionality
+Feature: Search functionality
 
 Scenario: Verify searching with existing product
 	Given User is on the Home page
