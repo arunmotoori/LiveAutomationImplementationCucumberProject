@@ -5,11 +5,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class RegisterPage {
+import pages.root.RootPage;
+
+public class RegisterPage extends RootPage {
 	
 	WebDriver driver;
-	
+
 	public RegisterPage(WebDriver driver) {
+		super(driver);
 		this.driver = driver;
 		PageFactory.initElements(driver,this);
 	}
@@ -42,40 +45,40 @@ public class RegisterPage {
 	WebElement continueButton;
 	
 	public AccountSuccessPage clickOnContinueButton() {
-		continueButton.click();
+		elementUtilities.clickOnElement(continueButton);
 		return new AccountSuccessPage(driver);
 	}
 	
 	public void selectPrivacyPolicyField() {
-		privacyPolicyField.click();
+		elementUtilities.clickOnElement(privacyPolicyField);
 	}
 	
 	public void selectYesNewsletterOption() {
-		yesNewsletterOption.click();
+		elementUtilities.clickOnElement(yesNewsletterOption);
 	}
 
 	public void enterConfirmPassword(String passwordText) {
-		confirmPasswordField.sendKeys(passwordText);
+		elementUtilities.enterTextIntoElement(confirmPasswordField, passwordText);
 	}
 	
 	public void enterPassword(String passwordText) {
-		passwordField.sendKeys(passwordText);
+		elementUtilities.enterTextIntoElement(passwordField, passwordText);
 	}
 	
 	public void enterTelephoneNumber(String telephoneText) {
-		telephoneField.sendKeys(telephoneText);
+		elementUtilities.enterTextIntoElement(telephoneField, telephoneText);
 	}
 	
 	public void enterFirstName(String firstNameText) {
-		firstNameField.sendKeys(firstNameText);
+		elementUtilities.enterTextIntoElement(firstNameField, firstNameText);
 	}
 	
 	public void enterLastName(String lastNameText) {
-		lastNameField.sendKeys(lastNameText);
+		elementUtilities.enterTextIntoElement(lastNameField, lastNameText);
 	}
 	
 	public void enterEmail(String emailText) {
-		emailField.sendKeys(emailText);
+		elementUtilities.enterTextIntoElement(emailField, emailText);
 	}
 
 }

@@ -73,7 +73,12 @@ public class Register {
 
 	@And("Proper details should be displayed on the Account Success page")
 	public void proper_details_should_be_displayed_on_the_account_success_page() {
-	    //I will implement this method in next session
+		Assert.assertTrue(accountSuccessPage.getContentOnAccountSuccessPage().contains("Your Account Has Been Created!"));
+		Assert.assertTrue(accountSuccessPage.getContentOnAccountSuccessPage().contains("Congratulations! Your new account has been successfully created!"));
+		Assert.assertTrue(accountSuccessPage.getContentOnAccountSuccessPage().contains("You can now take advantage of member privileges to enhance your online shopping experience with us."));
+		Assert.assertTrue(accountSuccessPage.getContentOnAccountSuccessPage().contains("If you have ANY questions about the operation of this online shop, please e-mail the store owner."));
+		Assert.assertTrue(accountSuccessPage.getContentOnAccountSuccessPage().contains("A confirmation has been sent to the provided e-mail address. If you have not received it within the hour, please"));
+		Assert.assertTrue(accountSuccessPage.getContentOnAccountSuccessPage().contains("contact us."));
 	}
 
 	@When("User clicks on Continue button on Account Success page")

@@ -5,11 +5,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class HomePage {
+import pages.root.RootPage;
+
+public class HomePage extends RootPage {
 	
 	WebDriver driver;
 	
 	public HomePage(WebDriver driver) {
+		super(driver);
 		this.driver = driver;
 		PageFactory.initElements(driver,this);
 	}
@@ -21,11 +24,11 @@ public class HomePage {
 	WebElement registerOption;
 	
 	public void clickOnMyAccountDropMenu() {
-		myAccountDropMenu.click();
+		elementUtilities.clickOnElement(myAccountDropMenu);
 	}
 	
 	public RegisterPage selectRegisterOption() {
-		registerOption.click();
+		elementUtilities.clickOnElement(registerOption);
 		return new RegisterPage(driver);
 	}
 
