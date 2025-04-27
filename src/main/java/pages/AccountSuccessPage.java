@@ -26,6 +26,14 @@ public class AccountSuccessPage extends RootPage {
 	@FindBy(id="content")
 	private WebElement accountSuccessPageContent;
 	
+	@FindBy(linkText="Continue")
+	private WebElement continueButton;
+	
+	public MyAccountPage clickOnContinueButton() {
+		elementUtilities.clickOnElement(continueButton);
+		return new MyAccountPage(driver);
+	}
+	
 	public String getContentOnAccountSuccessPage() {
 		return elementUtilities.getElementText(accountSuccessPageContent);
 	}

@@ -23,6 +23,9 @@ public class HomePage extends RootPage {
 	@FindBy(linkText="Register")
 	WebElement registerOption;
 	
+	@FindBy(linkText="Login")
+	WebElement loginOption;
+	
 	public void clickOnMyAccountDropMenu() {
 		elementUtilities.clickOnElement(myAccountDropMenu);
 	}
@@ -30,6 +33,11 @@ public class HomePage extends RootPage {
 	public RegisterPage selectRegisterOption() {
 		elementUtilities.clickOnElement(registerOption);
 		return new RegisterPage(driver);
+	}
+	
+	public LoginPage selectLoginOption() {
+		elementUtilities.clickOnElement(loginOption);
+		return new LoginPage(driver);
 	}
 
 }

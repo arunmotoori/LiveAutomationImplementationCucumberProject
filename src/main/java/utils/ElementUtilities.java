@@ -46,5 +46,19 @@ public class ElementUtilities {
 		}
 	    return text;
 	}
+	
+	public boolean isElementSelected(WebElement element) {
+		boolean b = false;
+		if (isElementDisplayedOnPage(element)) {
+			b = element.isSelected();
+		}
+		return b;
+	}
+	
+	public boolean isElementDisplayedOnPage(WebElement element) {
+		boolean b = false;
+		b = element.isDisplayed();
+		return b;
+	}
 
 }

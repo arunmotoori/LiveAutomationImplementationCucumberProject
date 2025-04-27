@@ -38,11 +38,39 @@ public class RegisterPage extends RootPage {
 	@FindBy(css="input[name='newsletter'][value='1']")
 	WebElement yesNewsletterOption;
 	
+	@FindBy(xpath = "//input[@name='newsletter'][@value='0']")
+	private WebElement noNewsletterOption;
+	
 	@FindBy(name="agree")
 	WebElement privacyPolicyField;
 	
 	@FindBy(css="input[value='Continue']")
 	WebElement continueButton;
+	
+	@FindBy(xpath = "//input[@id='input-firstname']/following-sibling::div")
+	private WebElement firstNameWarning;
+
+	@FindBy(xpath = "//input[@id='input-lastname']/following-sibling::div")
+	private WebElement lastNameWarning;
+
+	@FindBy(xpath = "//input[@id='input-email']/following-sibling::div")
+	private WebElement emailWarning;
+
+	@FindBy(xpath = "//input[@id='input-telephone']/following-sibling::div")
+	private WebElement telephoneWarning;
+
+	@FindBy(xpath = "//input[@id='input-password']/following-sibling::div")
+	private WebElement passwordWarning;
+
+	@FindBy(xpath = "//input[@id='input-confirm']/following-sibling::div")
+	private WebElement passwordConfirmationWarning;
+	
+	@FindBy(xpath = "//ul[@class='breadcrumb']//a[text()='Register']")
+	private WebElement registerPageBreadcrumb;
+	
+	public void selectNoNewletterOption() {
+		elementUtilities.clickOnElement(noNewsletterOption);
+	}
 	
 	public AccountSuccessPage clickOnContinueButton() {
 		elementUtilities.clickOnElement(continueButton);
@@ -79,6 +107,34 @@ public class RegisterPage extends RootPage {
 	
 	public void enterEmail(String emailText) {
 		elementUtilities.enterTextIntoElement(emailField, emailText);
+	}
+	
+	public String getPasswordConfirmationWarning() {
+		return elementUtilities.getElementText(passwordConfirmationWarning);
+	}
+
+	public String getPasswordWarning() {
+		return elementUtilities.getElementText(passwordWarning);
+	}
+
+	public String getEmailWarning() {
+		return elementUtilities.getElementText(emailWarning);
+	}
+
+	public String getTelephoneWarning() {
+		return elementUtilities.getElementText(telephoneWarning);
+	}
+
+	public String getLastNameWarning() {
+		return elementUtilities.getElementText(lastNameWarning);
+	}
+
+	public String getFirstNameWarning() {
+		return elementUtilities.getElementText(firstNameWarning);
+	}
+	
+	public boolean didWeNavigateToRegisterPage() {
+		return elementUtilities.isElementDisplayed(registerPageBreadcrumb);
 	}
 
 }
