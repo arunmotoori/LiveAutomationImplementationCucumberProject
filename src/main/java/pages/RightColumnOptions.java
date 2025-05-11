@@ -133,4 +133,9 @@ public class RightColumnOptions extends RootPage {
 		return new RegisterPage(driver);
 	}
 	
+	public ForgottenPasswordPage clickOnForgottenPasswordOption() {
+		elementUtilities.clickOnElement(forgottendPasswordOption);
+		return new ForgottenPasswordPage(driver);
+	}
+	
 }

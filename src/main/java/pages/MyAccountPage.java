@@ -32,6 +32,11 @@ public class MyAccountPage extends RootPage {
 	public boolean didWeNavigateToMyAccountPage() {
 		return elementUtilities.isElementDisplayed(editYourAccountInformationOption);
 	}
+	
+	public MyAccountInformationPage clickOnEditYourAccountInformationOption() {
+		elementUtilities.clickOnElement(editYourAccountInformationOption);
+		return new MyAccountInformationPage(driver);
+	}
 
 	
 }
