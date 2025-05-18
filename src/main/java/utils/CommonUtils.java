@@ -3,6 +3,7 @@ package utils;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -70,6 +71,18 @@ public class CommonUtils {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public static Properties storePropertiesFile(Properties prop) {
+		try {
+			FileWriter fw = new FileWriter(
+					System.getProperty("user.dir") + "\\src\\test\\resources\\config\\ProjectConfig.properties");
+			prop.store(fw,"Updated Properties file");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		return prop;
 	}
 	
 

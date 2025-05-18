@@ -30,10 +30,10 @@ import utils.CommonUtils;
 
 public class Register extends Base {
 
-	WebDriver driver;
 	Properties prop;
+	WebDriver driver;
 	String emailWithTimeStamp = "";
-	
+
 	@Given("User navigates to Register Account page")
 	public void user_navigates_to_register_account_page() {
 		driver = DriverFactory.getDriver();
@@ -620,28 +620,28 @@ public class Register extends Base {
 
 		} else if (browserName.equalsIgnoreCase("firefox")) {
 			String expectedWarningMessageOne = "Please enter an email address.";
-		    // Hard assertion for a single value check
-		    assertThat(myAccountInformationPage.getEmailDomProperty("validationMessage"))
-		          .isEqualTo(expectedWarningMessageOne);
+			// Hard assertion for a single value check
+			assertThat(myAccountInformationPage.getEmailDomProperty("validationMessage"))
+					.isEqualTo(expectedWarningMessageOne);
 		}
 	}
-	
+
 	@Then("Privacy Policy field should not be selected by default")
 	public void privacy_policy_field_should_not_be_selected_by_default() {
 		Assert.assertFalse(registerPage.isPrivacyPolicyFieldSelected());
 	}
-	
+
 	@Then("Proper warning messages to select the Privacy Policy field should be displayed")
 	public void warning_message_for_privacy_policy_should_be_displayed() {
 		Assert.assertEquals(registerPage.getPageLevelWarning(), "Warning: You must agree to the Privacy Policy!");
 	}
-	
+
 	@Then("Password text in password fields is toggled to hide its visibility")
 	public void password_fields_should_hide_text() {
 		Assert.assertEquals(registerPage.getPasswordFieldDomAttribute("type"), "password");
 		Assert.assertEquals(registerPage.getPasswordConfirmFieldDomAttribute("type"), "password");
 	}
-	
+
 	@Then("User should be able to navigate to other pages from Register Account page")
 	public void user_can_navigate_to_other_pages_from_register_account_page() {
 		headerOptions = registerPage.getHeaderOptions();
@@ -809,32 +809,31 @@ public class Register extends Base {
 		Assert.assertEquals(getPageTitle(loginPage.getDriver()), "Account Login");
 		navigateBackInBrowser(loginPage.getDriver());
 	}
-	
+
 	@And("User enters password only into the Password but not into the password confirm field")
 	public void user_enters_password_only() {
 		registerPage.enterPassword(prop.getProperty("validPassword"));
 	}
-	
+
 	@Then("Proper warning messages about password mismatch should be displayed")
 	public void proper_warning_message_about_password_mismatch_should_be_displayed() {
 		Assert.assertEquals(registerPage.getPasswordConfirmationWarning(),
 				"Password confirmation does not match password!");
 	}
-	
+
 	@Then("Proper breadcrumb, heading, url and title of register page should be displayed")
 	public void proper_breadcrumb_heading_url_and_title_should_be_displayed() {
-		Assert.assertEquals("Register Account",getPageTitle(registerPage.getDriver()));
-		Assert.assertEquals(getBaseURL() + prop.getProperty("registerPageURL"),getPageURL(registerPage.getDriver()));
+		Assert.assertEquals("Register Account", getPageTitle(registerPage.getDriver()));
+		Assert.assertEquals(getBaseURL() + prop.getProperty("registerPageURL"), getPageURL(registerPage.getDriver()));
 		Assert.assertTrue(registerPage.didWeNavigateToRegisterPage());
-		Assert.assertEquals("Register Account",registerPage.getPageHeading());
+		Assert.assertEquals("Register Account", registerPage.getPageHeading());
 	}
-	
+
 	@Then("Proper UI for Register Account page should be displayed")
 	public void proper_ui_for_register_account_page_should_be_displayed() {
 		String browserName = prop.getProperty("browserName");
 		if (browserName.equalsIgnoreCase("chrome")) {
-			CommonUtils.takeScreenshot(driver,
-					System.getProperty("user.dir") + "\\Screenshots\\actualRAPageUI.png");
+			CommonUtils.takeScreenshot(driver, System.getProperty("user.dir") + "\\Screenshots\\actualRAPageUI.png");
 			Assert.assertFalse(CommonUtils.compareTwoScreenshots(
 					System.getProperty("user.dir") + "\\Screenshots\\actualRAPageUI.png",
 					System.getProperty("user.dir") + "\\Screenshots\\expectedRAPageUI.png"));

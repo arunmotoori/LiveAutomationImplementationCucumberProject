@@ -138,4 +138,9 @@ public class RightColumnOptions extends RootPage {
 		return new ForgottenPasswordPage(driver);
 	}
 	
+	public AccountLogoutPage clickOnLogoutOption() {
+		elementUtilities.clickOnElement(logoutOption);
+		return new AccountLogoutPage(driver);
+	}
+	
 }

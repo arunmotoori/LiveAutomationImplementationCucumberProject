@@ -241,7 +241,6 @@ Given User opens Application URL in the browser
 When User navigates to Register Account page
 Then Proper UI for Register Account page should be displayed
 
-@arun
 Scenario: Verify Register Account functionality in all supported environments
 Given User navigates to Register Account page
 When User enters below fields
