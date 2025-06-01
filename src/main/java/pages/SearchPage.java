@@ -8,6 +8,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import pages.root.RootPage;
+import utils.CommonUtils;
 
 public class SearchPage extends RootPage {
 
@@ -149,6 +150,45 @@ public class SearchPage extends RootPage {
 	public SearchPage clickOnBreadcrumb() {
 		elementUtilities.clickOnElement(searchPageBreadcrumb);
 		return new SearchPage(driver);
+	}
+
+	public int getProductsCount() {
+		return elementUtilities.getElementsCount(productThumbnail);
+	}
+
+	public void selectOptionFromCategoryDropdownField(int optionIndex) {
+		elementUtilities.selectOptionFromDropdownFieldUsingIndex(categoriesDropdownField, optionIndex);
+	}
+
+	public void selectOptionFromCategoryDropdownField(String optionText) {
+		elementUtilities.selectOptionFromDropdownFieldUsingVisibleText(categoriesDropdownField, optionText);
+	}
+
+	public ProductDisplayPage clickOnProductOneImage() {
+		elementUtilities.clickOnElement(productOneImage);
+		return new ProductDisplayPage(driver);
+	}
+
+	public ProductDisplayPage clickOnProductOneName() {
+		elementUtilities.clickOnElement(productOneName);
+		return new ProductDisplayPage(driver);
+	}
+
+	public ProductComparisonPage selectProductCompareOption() {
+		elementUtilities.clickOnElement(productCompareOption);
+		return new ProductComparisonPage(driver);
+	}
+
+	public void selectSortOptionInDropdownField(String optionText) {
+		elementUtilities.selectOptionFromDropdownFieldUsingVisibleText(sortDropdownField, optionText);
+	}
+
+	public void selectOptionInShowDropdownField(String optionText) {
+		elementUtilities.selectOptionFromDropdownFieldUsingVisibleText(showDropdownField, optionText);
+	}
+
+	public boolean didProductsGotDisplayedInAscendingOrder() {
+		return CommonUtils.areItemsInListAreInAscendingOrder(elementUtilities.getTextOfElements(sortedProducts));
 	}
 
 }

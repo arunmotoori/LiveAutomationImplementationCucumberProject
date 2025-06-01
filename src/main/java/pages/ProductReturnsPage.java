@@ -42,4 +42,9 @@ public class ProductReturnsPage extends RootPage {
 		return new MyAccountPage(driver);
 	}
 	
+	public ReturnInformationPage clickOnViewOption() {
+		elementUtilities.clickOnElement(viewOption);
+		return new ReturnInformationPage(driver);
+	}
+	
 }

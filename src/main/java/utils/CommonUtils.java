@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Collections;
+import java.util.List;
 import java.util.Properties;
 
 import javax.imageio.ImageIO;
@@ -18,6 +20,10 @@ import ru.yandex.qatools.ashot.comparison.ImageDiff;
 import ru.yandex.qatools.ashot.comparison.ImageDiffer;
 
 public class CommonUtils {
+	
+	public static final int MIN_TIME = 3;
+	public static final int AVERAGE_TIME = 10;
+	public static final int MAX_TIME = 30;
 	
 	public static String generateEmailWithNanoTime() {
         long nanoTime = System.nanoTime();
@@ -85,5 +91,14 @@ public class CommonUtils {
 		return prop;
 	}
 	
+	public static int convertToInteger(String text) {
+		return Integer.parseInt(text);
+	}
+	
+	public static boolean areItemsInListAreInAscendingOrder(List<String> list) {
+		List<String> sortedList = list;
+		Collections.sort(sortedList);
+		return list.equals(sortedList);
+	}
 
 }

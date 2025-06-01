@@ -320,4 +320,15 @@ public class RegisterPage extends RootPage {
 		return new LoginPage(driver);
 	}
 	
+	public AccountSuccessPage registeringAnAccount(String firstNameText,String lastNameText,String emailText,String telephoneText,String passwordText) {
+		enterFirstName(firstNameText);
+		enterLastName(lastNameText);
+		enterEmail(emailText);
+		enterTelephone(telephoneText);
+		enterPassword(passwordText);
+		enterConfirmationPassword(passwordText);
+		selectPrivacyPolicyField();
+		return clickOnContinueButton();
+	}
+	
 }

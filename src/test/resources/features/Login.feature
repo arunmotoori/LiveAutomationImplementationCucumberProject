@@ -107,8 +107,7 @@ Feature: Login functionality
 		When User clicks on 'My Account' dropmenu from home page
 		And User selects 'Login' option from my account drop menu
 		Then Proper Breadcrumb,heading,title and url of login page should be displayed 	
-	
-	@arun
+
 	Scenario: Verify UI of login page
 	 	Given User opens Home page
 		When User clicks on 'My Account' dropmenu from home page

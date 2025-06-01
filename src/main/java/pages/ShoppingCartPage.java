@@ -19,5 +19,15 @@ public class ShoppingCartPage extends RootPage {
 	
 	@FindBy(xpath = "//a[text()='Checkout'][@class='btn btn-primary']")
 	private WebElement checkoutButton;
+	
+	public CheckoutPage clickOnCheckoutButton() {
+		elementUtilities.clickOnElement(checkoutButton);
+		return new CheckoutPage(driver);
+	}
+	
+	public GuestCheckoutPage clickOnCheckoutButtonWithoutLogin() {
+		elementUtilities.clickOnElement(checkoutButton);
+		return new GuestCheckoutPage(driver);
+	}
 
 }

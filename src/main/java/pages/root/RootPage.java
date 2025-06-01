@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import pages.AccountLogoutPage;
 import pages.FooterOptions;
 import pages.HeaderOptions;
 import pages.HomePage;
@@ -34,6 +35,9 @@ public class RootPage {
 	
 	@FindBy(xpath="//div[@id='content']/h1")
 	private WebElement pageHeading;
+	
+	@FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
+	private WebElement pageLevelSuccessMessage;
 	
 	public String getPageLevelWarning() {
 		return elementUtilities.getElementText(pageLevelWaring);
@@ -67,6 +71,14 @@ public class RootPage {
 	
 	public String getPageHeading() {
 		return elementUtilities.getElementText(pageHeading);
+	}
+	
+	public String getPageLevelSuccessMessage() {
+		return elementUtilities.getElementText(pageLevelSuccessMessage);
+	}
+	
+	public AccountLogoutPage getAccountLogoutPage() {
+		return new AccountLogoutPage(driver);
 	}
 
 }

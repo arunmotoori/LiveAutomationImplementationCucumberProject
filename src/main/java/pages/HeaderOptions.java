@@ -164,5 +164,15 @@ public class HeaderOptions extends RootPage {
 		elementUtilities.clickOnElement(searchButton);
 		return new SearchPage(driver);
 	}
+	
+	public SearchPage enterProductAndClickOnSearchButton(String productName) {
+		enterProductIntoSearchBoxField(productName);
+		return clickOnSearchButton();
+	}
+	
+	public AccountLogoutPage selectLogoutOption() {
+		elementUtilities.clickOnElement(logoutOption);
+		return new AccountLogoutPage(driver);
+	}
 
 }
